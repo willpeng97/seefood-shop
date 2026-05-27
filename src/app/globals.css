@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+:root {
+  --ocean-900: #002147;
+  --ocean-800: #003366;
+  --ocean-700: #004080;
+  --ocean-600: #1a5276;
+  --ocean-200: #aed6f1;
+  --ocean-100: #d4e6f1;
+  --ocean-50: #ebf5fb;
+  --celadon-900: #2d6a4f;
+  --celadon-700: #40916c;
+  --celadon-500: #52b788;
+  --celadon-300: #95d5b2;
+  --celadon-200: #b7e4c7;
+  --celadon-50: #d8f3dc;
+  --accent: #ff4500;
+  --accent-hover: #e03e00;
+  --background: #f8fafc;
+  --foreground: #002147;
+}
+
+@theme inline {
+  --color-ocean-900: var(--ocean-900);
+  --color-ocean-800: var(--ocean-800);
+  --color-ocean-700: var(--ocean-700);
+  --color-ocean-600: var(--ocean-600);
+  --color-ocean-200: var(--ocean-200);
+  --color-ocean-100: var(--ocean-100);
+  --color-ocean-50: var(--ocean-50);
+  --color-celadon-900: var(--celadon-900);
+  --color-celadon-700: var(--celadon-700);
+  --color-celadon-500: var(--celadon-500);
+  --color-celadon-300: var(--celadon-300);
+  --color-celadon-200: var(--celadon-200);
+  --color-celadon-50: var(--celadon-50);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-noto-sans);
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-noto-sans), "Noto Sans TC", system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+/* WCAG 2.1 AA：確保連結與按鈕有明顯焦點 */
+:focus-visible {
+  outline: 2px solid var(--celadon-500);
+  outline-offset: 2px;
+}
