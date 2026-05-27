@@ -1,0 +1,104 @@
+[
+  {
+    "id": "lu-hao-jia-001",
+    "name": "去刺金目鱸魚排",
+    "description": "嘉義魚塭直送，三清處理後急凍鎖鮮。煎至焦黃外酥內嫩，適合煎、烤、清蒸。",
+    "price": 250,
+    "weight_range": "250g-300g",
+    "temp_layer": "frozen",
+    "traceability": {
+      "origin": "嘉義魚塭",
+      "harvest_date": "2026-05-20",
+      "certification_url": "/docs/lab-report-001.pdf"
+    },
+    "tags": ["三清處理", "去刺", "急凍直送"],
+    "image": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b9a2?w=1200&q=80",
+    "scale_image": "https://images.unsplash.com/photo-1544943910-04c54e739fe7?w=800&q=80",
+    "category": "魚排"
+  },
+  {
+    "id": "lu-hao-jia-002",
+    "name": "野生白蝦仁",
+    "description": "台灣西部海域捕撈，去殼急凍。肉質彈牙，適合炒菜、煮粥、火鍋。",
+    "price": 380,
+    "weight_range": "300g",
+    "temp_layer": "frozen",
+    "traceability": {
+      "origin": "雲林口湖",
+      "harvest_date": "2026-05-18",
+      "certification_url": "/docs/lab-report-002.pdf"
+    },
+    "tags": ["去殼", "急凍直送", "無添加"],
+    "image": "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=1200&q=80",
+    "scale_image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
+    "category": "蝦類"
+  },
+  {
+    "id": "lu-hao-jia-003",
+    "name": "干貝禮盒",
+    "description": "澎湖產地直送，常溫保存。每顆干貝均附產地證明，適合送禮或宴客。",
+    "price": 1280,
+    "weight_range": "12顆/盒",
+    "temp_layer": "ambient",
+    "traceability": {
+      "origin": "澎湖望安",
+      "harvest_date": "2026-04-15",
+      "certification_url": "/docs/lab-report-003.pdf"
+    },
+    "tags": ["禮盒", "產地直送", "SGS檢驗"],
+    "image": "https://images.unsplash.com/photo-1559847843-ffeb791d8a0a?w=1200&q=80",
+    "scale_image": "https://images.unsplash.com/photo-1563379926898-05f4575a88d8?w=800&q=80",
+    "category": "貝類"
+  },
+  {
+    "id": "lu-hao-jia-004",
+    "name": "鮭魚切片",
+    "description": "挪威進口鮭魚，切片急凍。油脂豐富，適合生食、炙燒或香煎。",
+    "price": 420,
+    "weight_range": "200g",
+    "temp_layer": "frozen",
+    "traceability": {
+      "origin": "挪威",
+      "harvest_date": "2026-05-10",
+      "certification_url": "/docs/lab-report-004.pdf"
+    },
+    "tags": ["切片", "生食級", "急凍直送"],
+    "image": "https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=1200&q=80",
+    "scale_image": "https://images.unsplash.com/photo-1580959375944-d1b958e64b0b?w=800&q=80",
+    "category": "魚排"
+  },
+  {
+    "id": "lu-hao-jia-005",
+    "name": "一夜干午仔魚",
+    "description": "基隆漁港直送，一夜干工法保留鮮甜。常溫配送，開袋即烤。",
+    "price": 320,
+    "weight_range": "3尾/包",
+    "temp_layer": "ambient",
+    "traceability": {
+      "origin": "基隆漁港",
+      "harvest_date": "2026-05-22",
+      "certification_url": "/docs/lab-report-005.pdf"
+    },
+    "tags": ["一夜干", "漁港直送", "即烤即食"],
+    "image": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1200&q=80",
+    "scale_image": "https://images.unsplash.com/photo-1534604973900-4ff81f62ca8c?w=800&q=80",
+    "category": "一夜干"
+  },
+  {
+    "id": "lu-hao-jia-006",
+    "name": "帝王蟹腳",
+    "description": "阿拉斯加帝王蟹腳，急凍直送。蟹肉飽滿，適合清蒸或焗烤。",
+    "price": 1680,
+    "weight_range": "500g",
+    "temp_layer": "frozen",
+    "traceability": {
+      "origin": "阿拉斯加",
+      "harvest_date": "2026-04-28",
+      "certification_url": "/docs/lab-report-006.pdf"
+    },
+    "tags": ["進口", "蟹腳", "急凍直送"],
+    "image": "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=1200&q=80",
+    "scale_image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
+    "category": "蟹類"
+  }
+]
