@@ -1,0 +1,21 @@
+{
+  "name": "seefood-shop",
+  "version": "1.0.0",
+  "description": "A simple seefood shop web application",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test src/**/*.test.js",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix"
+  },
+  "keywords": ["seefood", "shop"],
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^9.0.0"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}

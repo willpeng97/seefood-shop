@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seefood Shop</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: #f0f4f8; color: #1a202c; }
+    header { background: linear-gradient(135deg, #2b6cb0, #2c5282); color: white; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { font-size: 1.8rem; }
+    #cart-badge { background: #ed8936; border-radius: 50%; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem; cursor: pointer; }
+    .container { max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
+    .categories { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .categories button { padding: 0.5rem 1rem; border: 2px solid #2b6cb0; background: white; border-radius: 8px; cursor: pointer; font-size: 0.9rem; transition: all 0.2s; }
+    .categories button.active, .categories button:hover { background: #2b6cb0; color: white; }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .menu-card { background: white; border-radius: 12px; padding: 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: transform 0.2s; }
+    .menu-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .menu-card h3 { color: #2b6cb0; margin-bottom: 0.3rem; }
+    .menu-card p { color: #718096; font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .menu-card .price { font-size: 1.1rem; font-weight: bold; color: #2d3748; }
+    .menu-card button { margin-top: 0.75rem; width: 100%; padding: 0.6rem; background: #2b6cb0; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.95rem; }
+    .menu-card button:hover { background: #2c5282; }
+    #cart-panel { display: none; position: fixed; right: 0; top: 0; width: 360px; height: 100%; background: white; box-shadow: -4px 0 20px rgba(0,0,0,0.15); z-index: 100; padding: 1.5rem; overflow-y: auto; }
+    #cart-panel.open { display: block; }
+    #cart-panel h2 { margin-bottom: 1rem; }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0; }
+    .cart-item button { background: #e53e3e; color: white; border: none; border-radius: 4px; padding: 0.25rem 0.5rem; cursor: pointer; font-size: 0.8rem; }
+    #cart-total { font-size: 1.2rem; font-weight: bold; margin-top: 1rem; }
+    #checkout-btn { width: 100%; padding: 0.75rem; background: #38a169; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; margin-top: 1rem; }
+    #checkout-btn:hover { background: #2f855a; }
+    #close-cart { background: none; border: none; font-size: 1.5rem; cursor: pointer; float: right; }
+    .order-confirmation { text-align: center; padding: 2rem; }
+    .order-confirmation h2 { color: #38a169; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🐟 Seefood Shop</h1>
+    <span id="cart-badge" onclick="toggleCart()">0</span>
+  </header>
+  <div class="container">
+    <div class="categories">
+      <button class="active" onclick="filterCategory('all', this)">All</button>
+      <button onclick="filterCategory('starters', this)">Starters</button>
+      <button onclick="filterCategory('mains', this)">Mains</button>
+      <button onclick="filterCategory('drinks', this)">Drinks</button>
+    </div>
+    <div id="menu" class="menu-grid"></div>
+  </div>
+  <div id="cart-panel">
+    <button id="close-cart" onclick="toggleCart()">&times;</button>
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <div id="cart-total">Total: $0.00</div>
+    <button id="checkout-btn" onclick="checkout()">Checkout</button>
+  </div>
+  <script>
+    let menuData = [];
+
+    async function loadMenu() {
+      const res = await fetch("/api/menu");
+      menuData = await res.json();
+      renderMenu(menuData);
+    }
+
+    function renderMenu(items) {
+      document.getElementById("menu").innerHTML = items
+        .map(item => `
+          <div class="menu-card">
+            <h3>${item.name}</h3>
+            <p>${item.description}</p>
+            <span class="price">$${item.price.toFixed(2)}</span>
+            <button onclick="addToCart(${item.id})">Add to Cart</button>
+          </div>
+        `).join("");
+    }
+
+    function filterCategory(cat, btn) {
+      document.querySelectorAll(".categories button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      if (cat === "all") { renderMenu(menuData); }
+      else { renderMenu(menuData.filter(i => i.category === cat)); }
+    }
+
+    async function addToCart(menuItemId) {
+      await fetch("/api/cart", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ menuItemId }),
+      });
+      await refreshCart();
+    }
+
+    async function refreshCart() {
+      const res = await fetch("/api/cart");
+      const data = await res.json();
+      const badge = document.getElementById("cart-badge");
+      badge.textContent = data.items.reduce((s, i) => s + i.quantity, 0);
+      document.getElementById("cart-items").innerHTML = data.items
+        .map(item => `
+          <div class="cart-item">
+            <div><strong>${item.name}</strong> x${item.quantity}<br/>$${(item.price * item.quantity).toFixed(2)}</div>
+            <button onclick="removeFromCart(${item.cartId})">Remove</button>
+          </div>
+        `).join("");
+      document.getElementById("cart-total").textContent = `Total: $${data.total.toFixed(2)}`;
+    }
+
+    async function removeFromCart(cartId) {
+      await fetch(`/api/cart/${cartId}`, { method: "DELETE" });
+      await refreshCart();
+    }
+
+    function toggleCart() {
+      document.getElementById("cart-panel").classList.toggle("open");
+      refreshCart();
+    }
+
+    async function checkout() {
+      const res = await fetch("/api/cart/checkout", { method: "POST" });
+      const order = await res.json();
+      if (order.error) { alert(order.error); return; }
+      document.getElementById("cart-panel").innerHTML = `
+        <div class="order-confirmation">
+          <h2>Order Confirmed!</h2>
+          <p>Order #${order.orderId}</p>
+          <p>Total: $${order.total.toFixed(2)}</p>
+          <p>${order.items.length} item(s)</p>
+          <button onclick="location.reload()" style="margin-top:1rem;padding:0.5rem 1rem;background:#2b6cb0;color:white;border:none;border-radius:8px;cursor:pointer;">Continue Shopping</button>
+        </div>
+      `;
+      document.getElementById("cart-badge").textContent = "0";
+    }
+
+    loadMenu();
+  </script>
+</body>
+</html>

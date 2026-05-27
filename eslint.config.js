@@ -1,0 +1,35 @@
+export default [
+  {
+    files: ["src/**/*.js"],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: "commonjs",
+      globals: {
+        console: "readonly",
+        process: "readonly",
+        __dirname: "readonly",
+        __filename: "readonly",
+        URL: "readonly",
+        require: "readonly",
+        module: "readonly",
+        exports: "readonly",
+        describe: "readonly",
+        it: "readonly",
+        test: "readonly",
+        before: "readonly",
+        after: "readonly",
+        beforeEach: "readonly",
+        afterEach: "readonly",
+      },
+    },
+    rules: {
+      "no-unused-vars": "warn",
+      "no-undef": "error",
+      "no-console": "off",
+      eqeqeq: "error",
+      curly: "error",
+      "no-var": "error",
+      "prefer-const": "warn",
+    },
+  },
+];
