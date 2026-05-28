@@ -26,7 +26,7 @@ npm run dev
 
 **網址：** https://willpeng97.github.io/seefood-shop/
 
-合併至 `main` 後，GitHub Actions 會自動執行靜態建置並部署。首次請至 Repo **Settings → Pages → Build and deployment → Source** 選擇 **GitHub Actions**。
+合併至 `main` 後，GitHub Actions 會將靜態檔推送到 `gh-pages` 分支。首次請至 Repo **Settings → Pages → Build and deployment → Source** 選擇 **Deploy from a branch**，Branch 設為 **gh-pages** / **/ (root)**。
 
 本地預覽靜態站：
 
