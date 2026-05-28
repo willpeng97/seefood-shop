@@ -9,6 +9,7 @@ interface AddToCartButtonProps {
   compact?: boolean;
   label?: string;
   buyNow?: boolean;
+  quantity?: number;
 }
 
 export function AddToCartButton({
@@ -16,12 +17,13 @@ export function AddToCartButton({
   compact = false,
   label = "加入購物車",
   buyNow = false,
+  quantity = 1,
 }: AddToCartButtonProps) {
   const addItem = useCartStore((s) => s.addItem);
   const router = useRouter();
 
   const handleClick = () => {
-    addItem(product);
+    addItem(product, quantity);
     if (buyNow) router.push("/checkout");
   };
 
