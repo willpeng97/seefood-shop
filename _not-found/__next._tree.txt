@@ -1,0 +1,3 @@
+:HL["/seefood-shop/_next/static/chunks/0lql3.ekvdl_g.css","style"]
+:HL["/seefood-shop/_next/static/chunks/06f~~h99160b-.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"AG0hi2XAW7nuxPzSWVIPL"}

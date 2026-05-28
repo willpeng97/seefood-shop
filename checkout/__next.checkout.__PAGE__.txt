@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[61626,["/seefood-shop/_next/static/chunks/0b1~scav4_w_j.js","/seefood-shop/_next/static/chunks/0d3shmwh5_nmn.js","/seefood-shop/_next/static/chunks/10bijv~b-edbm.js"],"CheckoutClient"]
+3:I[97367,["/seefood-shop/_next/static/chunks/0b1~scav4_w_j.js","/seefood-shop/_next/static/chunks/0d3shmwh5_nmn.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"mx-auto max-w-7xl px-4 py-10 sm:px-6","children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-bold text-ocean-900","children":"結帳"}],["$","p",null,{"className":"mt-2 text-lg text-ocean-700","children":"一頁完成購物清單確認、收件資訊與付款選擇，減少跳轉流失。"}]]}],["$","$L2",null,{}]]}],[["$","script","script-0",{"src":"/seefood-shop/_next/static/chunks/10bijv~b-edbm.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"AG0hi2XAW7nuxPzSWVIPL"}
+5:null

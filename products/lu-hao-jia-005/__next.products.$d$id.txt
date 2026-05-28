@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[39756,["/seefood-shop/_next/static/chunks/0b1~scav4_w_j.js","/seefood-shop/_next/static/chunks/0d3shmwh5_nmn.js"],"default"]
+3:I[37457,["/seefood-shop/_next/static/chunks/0b1~scav4_w_j.js","/seefood-shop/_next/static/chunks/0d3shmwh5_nmn.js"],"default"]
+4:I[22016,["/seefood-shop/_next/static/chunks/0b1~scav4_w_j.js","/seefood-shop/_next/static/chunks/0d3shmwh5_nmn.js","/seefood-shop/_next/static/chunks/184q4ffe~y6bx.js"],""]
+5:[]
+0:{"rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}],"notFound":[["$","div",null,{"className":"mx-auto max-w-lg px-4 py-20 text-center","children":[["$","h1",null,{"className":"text-2xl font-bold text-ocean-900","children":"找不到商品"}],["$","p",null,{"className":"mt-2 text-lg text-ocean-700","children":"此商品可能已下架或網址有誤。"}],["$","$L4",null,{"href":"/products","className":"mt-6 inline-flex min-h-[48px] items-center rounded-xl bg-accent px-6 py-3 font-semibold text-white hover:bg-accent-hover","children":"返回商品列表"}]]}],[]]}]]}],"isPartial":false,"staleTime":300,"varyParams":"$W5","buildId":"AG0hi2XAW7nuxPzSWVIPL"}
