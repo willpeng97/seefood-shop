@@ -1,4 +1,5 @@
 :HL["/seefood-shop/_next/static/chunks/0lql3.ekvdl_g.css","style"]
-:HL["/seefood-shop/_next/static/chunks/13x84y603aums.css","style"]
+:HL["/seefood-shop/_next/static/chunks/0qy7vmglzg8ve.css","style"]
+:HL["/seefood-shop/_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/seefood-shop/_next/static/media/fb4edce8a3cbfef3-s.p.0.lue0dq2fhwq.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"products","param":null,"prefetchHints":0,"slots":{"children":{"name":"id","param":{"type":"d","key":"lu-hao-jia-005","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"Go6FxfeIU6vi7dwkFhDV-"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"products","param":null,"prefetchHints":0,"slots":{"children":{"name":"id","param":{"type":"d","key":"lu-hao-jia-005","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"LfE0qBBdhzc-1LOJc6TLe"}
