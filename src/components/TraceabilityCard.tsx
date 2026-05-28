@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Traceability } from "@/types/product";
+import { assetPath } from "@/lib/paths";
 
 interface TraceabilityCardProps {
   traceability: Traceability;
@@ -53,7 +54,7 @@ export function TraceabilityCard({
               <dt className="font-medium text-ocean-600">檢驗報告</dt>
               <dd>
                 <a
-                  href={traceability.certification_url}
+                  href={assetPath(traceability.certification_url)}
                   className="text-celadon-700 underline underline-offset-2 hover:text-celadon-900 focus:outline-none focus:ring-2 focus:ring-celadon-500 rounded"
                   target="_blank"
                   rel="noopener noreferrer"

@@ -2,12 +2,17 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getProductById } from "@/lib/products";
+import { getProductById, getProducts } from "@/lib/products";
 import { TempLayerBadge } from "@/components/TempLayerBadge";
 import { TraceabilityCard } from "@/components/TraceabilityCard";
 import { AddToCartButton } from "@/components/AddToCartButton";
 
 type PageProps = { params: Promise<{ id: string }> };
+
+export async function generateStaticParams() {
+  const products = await getProducts();
+  return products.map((p) => ({ id: p.id }));
+}
 
 export async function generateMetadata({
   params,

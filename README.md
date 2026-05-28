@@ -22,13 +22,25 @@ npm run dev
 
 開啟 [http://localhost:3000](http://localhost:3000)
 
+## 線上 Demo（GitHub Pages）
+
+**網址：** https://willpeng97.github.io/seefood-shop/
+
+合併至 `main` 後，GitHub Actions 會自動執行靜態建置並部署。首次請至 Repo **Settings → Pages → Build and deployment → Source** 選擇 **GitHub Actions**。
+
+本地預覽靜態站：
+
+```bash
+npm run build:pages
+npx serve out -l 3000
+# 瀏覽 http://localhost:3000/seefood-shop/
+```
+
 ## 專案結構
 
 ```
 src/
 ├── app/
-│   ├── api/products/     # Mock API（未來替換 DB 查詢）
-│   ├── api/checkout/     # Mock 結帳
 │   ├── products/         # 商品列表（Server Component）
 │   ├── products/[id]/    # 商品詳情 + 溯源卡片
 │   └── checkout/         # 一頁式結帳（動態載入）
@@ -51,15 +63,16 @@ src/
 
 ## 第二階段對接
 
-1. 將 `src/lib/products.ts` 與 API Routes 改為 PostgreSQL / MongoDB
+1. 將 `src/lib/products.ts` 改為 PostgreSQL / MongoDB 查詢（並恢復 API Routes 若需 SSR）
 2. 串接 LINE Pay、信用卡預授權
 3. 串接黑貓 / 新竹物流追蹤 API
 
 ## 指令
 
 ```bash
-npm run dev    # 開發
-npm run build  # 建置
-npm run start  # 生產預覽
-npm run lint   # ESLint
+npm run dev         # 開發
+npm run build       # 標準建置（含 Node 伺服器）
+npm run build:pages # GitHub Pages 靜態匯出
+npm run start       # 生產預覽
+npm run lint        # ESLint
 ```

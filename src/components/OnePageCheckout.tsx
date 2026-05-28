@@ -48,32 +48,41 @@ export function OnePageCheckout() {
     setError(null);
 
     try {
-      const res = await fetch(`${env.apiBaseUrl}/api/checkout`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          items: items.map((i) => ({
-            id: i.product.id,
-            quantity: i.quantity,
-          })),
-          shipping: {
-            name: form.name,
-            phone: form.phone,
-            email: form.email,
-            address: form.address,
-            city: form.city,
-            postalCode: form.postalCode,
-          },
-          paymentMethod: form.paymentMethod,
-          note: form.note,
-        }),
-      });
+      const payload = {
+        items: items.map((i) => ({
+          id: i.product.id,
+          quantity: i.quantity,
+        })),
+        shipping: {
+          name: form.name,
+          phone: form.phone,
+          email: form.email,
+          address: form.address,
+          city: form.city,
+          postalCode: form.postalCode,
+        },
+        paymentMethod: form.paymentMethod,
+        note: form.note,
+      };
 
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "結帳失敗");
+      // GitHub Pages 靜態部署無 API Routes，改用前端 Mock
+      if (process.env.NEXT_PUBLIC_STATIC_EXPORT === "true") {
+        await new Promise((r) => setTimeout(r, 600));
+        setOrderId(`ORD-${Date.now()}`);
+        clearCart();
+      } else {
+        const res = await fetch(`${env.apiBaseUrl}/api/checkout`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
 
-      setOrderId(data.orderId);
-      clearCart();
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error ?? "結帳失敗");
+
+        setOrderId(data.orderId);
+        clearCart();
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "結帳時發生錯誤");
     } finally {
