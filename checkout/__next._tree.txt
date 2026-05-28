@@ -1,5 +1,5 @@
 :HL["/seefood-shop/_next/static/chunks/0lql3.ekvdl_g.css","style"]
-:HL["/seefood-shop/_next/static/chunks/0qy7vmglzg8ve.css","style"]
+:HL["/seefood-shop/_next/static/chunks/0p_z4z9xnm4op.css","style"]
 :HL["/seefood-shop/_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/seefood-shop/_next/static/media/fb4edce8a3cbfef3-s.p.0.lue0dq2fhwq.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"checkout","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"UrMg6gDC9Yk9WtpEeqDG9"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"checkout","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"Lf5wx-Atp14qs0hreeY1n"}

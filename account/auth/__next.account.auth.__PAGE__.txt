@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[87646,["/seefood-shop/_next/static/chunks/0hae8y-ck~0d~.js","/seefood-shop/_next/static/chunks/0d3shmwh5_nmn.js","/seefood-shop/_next/static/chunks/0fs0.d87aqym7.js"],"AuthPanel"]
+3:I[97367,["/seefood-shop/_next/static/chunks/0hae8y-ck~0d~.js","/seefood-shop/_next/static/chunks/0d3shmwh5_nmn.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"mx-auto max-w-7xl px-4 py-10 sm:px-6","children":[["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-3xl font-semibold text-ocean-900 sm:text-4xl","children":"會員註冊與登入"}],["$","p",null,{"className":"mt-2 text-lg text-ocean-700","children":"提供 Email 帳號、Google 與 LINE 登入流程。此頁為前端介面，尚未串接後端驗證。"}]]}],["$","$L2",null,{}]]}],[["$","script","script-0",{"src":"/seefood-shop/_next/static/chunks/0fs0.d87aqym7.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Lf5wx-Atp14qs0hreeY1n"}
+5:null
