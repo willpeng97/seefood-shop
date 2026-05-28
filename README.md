@@ -1,4 +1,4 @@
-# 鱸好家（seefood-shop）— 水產電商平台（第一階段）
+# 遇見鮮食（seefood-shop）— 水產電商平台（第一階段）
 
 台灣水產直送電商前端，採用 **Next.js App Router**、**TypeScript**、**Tailwind CSS** 與 **Zustand** 購物車狀態管理。
 
@@ -50,16 +50,6 @@ src/
 ├── store/cart-store.ts
 └── types/
 ```
-
-## 功能對照規格
-
-- **海洋色彩**：深海藍 `#002147`、青瓷綠、夕陽橘 `#FF4500` 強調按鈕
-- **高食慾首圖**：首頁 Hero 熟食風格鱸魚排
-- **比例尺圖**：商品詳情頁 `scale_image` 區塊
-- **溫層標籤**：`temp_layer` → 冷凍 / 常溫
-- **數位溯源**：可展開 TraceabilityCard
-- **一頁式結帳**：購物清單 + 收件 + 付款（Mock）
-- **WCAG**：語意化標籤、16px 基準字體、焦點環、對比色
 
 ## 第二階段對接
 
