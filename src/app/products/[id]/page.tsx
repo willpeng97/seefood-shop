@@ -17,7 +17,7 @@ export async function generateMetadata({
   const product = await getProductById(id);
   if (!product) return { title: "商品不存在" };
   return {
-    title: `${product.name} | 鱸好家`,
+    title: `${product.name} | SEEFOOD｜遇見鮮食`,
     description: product.description,
   };
 }

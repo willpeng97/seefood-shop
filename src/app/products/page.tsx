@@ -3,7 +3,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { getProducts } from "@/lib/products";
 
 export const metadata: Metadata = {
-  title: "全部商品 | 鱸好家",
+  title: "全部商品 | SEEFOOD｜遇見鮮食",
   description: "瀏覽台灣在地水產，冷凍與常溫商品一覽。",
 };
 

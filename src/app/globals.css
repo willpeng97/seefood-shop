@@ -1,23 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --ocean-900: #002147;
-  --ocean-800: #003366;
-  --ocean-700: #004080;
-  --ocean-600: #1a5276;
-  --ocean-200: #aed6f1;
-  --ocean-100: #d4e6f1;
-  --ocean-50: #ebf5fb;
-  --celadon-900: #2d6a4f;
-  --celadon-700: #40916c;
-  --celadon-500: #52b788;
-  --celadon-300: #95d5b2;
-  --celadon-200: #b7e4c7;
-  --celadon-50: #d8f3dc;
-  --accent: #ff4500;
-  --accent-hover: #e03e00;
+  --ocean-900: #0f172a;
+  --ocean-800: #1e293b;
+  --ocean-700: #334155;
+  --ocean-600: #475569;
+  --ocean-300: #93c5fd;
+  --ocean-200: #bfdbfe;
+  --ocean-100: #e0f2fe;
+  --ocean-50: #f0f9ff;
+  --celadon-900: #0369a1;
+  --celadon-700: #0284c7;
+  --celadon-500: #0ea5e9;
+  --celadon-300: #7dd3fc;
+  --celadon-200: #bae6fd;
+  --celadon-50: #f0f9ff;
+  --accent: #0f172a;
+  --accent-hover: #0ea5e9;
+  --coral-500: #fb923c;
+  --coral-100: #ffedd5;
   --background: #f8fafc;
-  --foreground: #002147;
+  --foreground: #0f172a;
 }
 
 @theme inline {
@@ -36,9 +39,12 @@
   --color-celadon-50: var(--celadon-50);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
+  --color-coral-500: var(--coral-500);
+  --color-coral-100: var(--coral-100);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-noto-sans);
+  --font-mono: var(--font-inter);
 }
 
 html {

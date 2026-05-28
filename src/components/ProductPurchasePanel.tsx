@@ -38,7 +38,7 @@ export function ProductPurchasePanel({ product }: ProductPurchasePanelProps) {
   return (
     <div className="rounded-2xl border border-ocean-100 bg-white p-6 shadow-sm lg:sticky lg:top-24">
       {product.promo_label && (
-        <p className="mb-3 inline-block rounded-lg bg-accent/10 px-3 py-1 text-base font-medium text-accent">
+        <p className="mb-3 inline-block rounded-lg bg-coral-100 px-3 py-1 text-base font-medium text-coral-500">
           {product.promo_label}
         </p>
       )}
@@ -57,7 +57,7 @@ export function ProductPurchasePanel({ product }: ProductPurchasePanelProps) {
       </p>
 
       <div className="mt-5 flex flex-wrap items-baseline gap-3">
-        <span className="text-3xl font-bold text-ocean-900">
+        <span className="text-3xl font-bold text-coral-500">
           NT$ {product.price.toLocaleString()}
         </span>
         {product.original_price && product.original_price > product.price && (

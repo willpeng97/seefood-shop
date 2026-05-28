@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans_TC } from "next/font/google";
+import { Inter, Noto_Sans_TC } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -11,10 +11,16 @@ const notoSans = Noto_Sans_TC({
   weight: ["400", "500", "600", "700"],
 });
 
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
-  title: "鱸好家 | 台灣水產直送電商",
+  title: "SEEFOOD｜遇見鮮食",
   description:
-    "急凍鎖鮮、溯源透明的水產電商。嘉義魚塭直送金目鱸、雲林白蝦，三清處理安心選購。",
+    "重新定義海鮮電商的生活品牌。以現代化、可信任與高品質體驗，讓每一餐遇見最新鮮的日常。",
 };
 
 export default function RootLayout({
@@ -23,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-Hant" className={`${notoSans.variable} h-full`}>
+    <html lang="zh-Hant" className={`${notoSans.variable} ${inter.variable} h-full`}>
       <body className="flex min-h-full flex-col antialiased">
         <CartHydration />
         <Header />

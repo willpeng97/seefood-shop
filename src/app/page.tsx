@@ -19,22 +19,22 @@ export default async function HomePage() {
           品牌特色
         </h2>
         <ul className="grid gap-8 sm:grid-cols-3">
-          <li className="rounded-xl bg-white p-6 shadow-sm border border-ocean-100">
-            <h3 className="text-lg font-semibold text-ocean-900">急凍鎖鮮</h3>
+          <li className="rounded-2xl border border-ocean-100 bg-white p-6 shadow-sm">
+            <h3 className="text-lg font-semibold text-ocean-900">Fresh｜新鮮鎖鮮</h3>
             <p className="mt-2 text-base text-ocean-700">
-              從魚塭到冷鏈，全程 -18°C 急凍，保留現撈鮮甜。
+              從產地到冷鏈，全程控溫與職人處理，保留海鮮最自然的鮮甜。
             </p>
           </li>
-          <li className="rounded-xl bg-white p-6 shadow-sm border border-ocean-100">
-            <h3 className="text-lg font-semibold text-ocean-900">數位溯源</h3>
+          <li className="rounded-2xl border border-ocean-100 bg-white p-6 shadow-sm">
+            <h3 className="text-lg font-semibold text-ocean-900">Curated｜精選選品</h3>
             <p className="mt-2 text-base text-ocean-700">
-              產地、捕撈日期、SGS 檢驗報告一目了然。
+              以生活提案方式挑選每款商品，讓忙碌都會族群也能輕鬆吃得好。
             </p>
           </li>
-          <li className="rounded-xl bg-white p-6 shadow-sm border border-ocean-100">
-            <h3 className="text-lg font-semibold text-ocean-900">溫層拆單</h3>
+          <li className="rounded-2xl border border-ocean-100 bg-white p-6 shadow-sm">
+            <h3 className="text-lg font-semibold text-ocean-900">Trustworthy｜透明可信</h3>
             <p className="mt-2 text-base text-ocean-700">
-              冷凍與常溫分開標記，未來自動拆單配送。
+              產地、處理流程與檢驗報告清楚揭露，看見食材真正的樣子。
             </p>
           </li>
         </ul>
@@ -48,9 +48,9 @@ export default async function HomePage() {
           <div className="flex items-end justify-between gap-4">
             <h2
               id="featured-heading"
-              className="text-3xl font-bold text-ocean-900"
+              className="text-3xl font-semibold text-ocean-900"
             >
-              人氣商品
+              本週精選
             </h2>
             <Link
               href="/products"

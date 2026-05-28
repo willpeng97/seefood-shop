@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { CheckoutClient } from "@/components/CheckoutClient";
 
 export const metadata: Metadata = {
-  title: "結帳 | 鱸好家",
+  title: "結帳 | SEEFOOD｜遇見鮮食",
   description: "一頁式結帳，整合購物清單、收件資訊與支付方式。",
 };
 
