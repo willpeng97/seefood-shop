@@ -8,7 +8,7 @@ export function Hero() {
       aria-labelledby="hero-heading"
     >
       <Image
-        src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b9a2?w=1920&q=85"
+        src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1920&q=85"
         alt="煎至焦黃的鱸魚排，外酥內嫩的高食慾感熟食照片"
         fill
         priority

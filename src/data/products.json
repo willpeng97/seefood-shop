@@ -14,11 +14,11 @@
       "certification_url": "/docs/lab-report-001.pdf"
     },
     "tags": ["三清處理", "去刺", "急凍直送"],
-    "image": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b9a2?w=1200&q=80",
-    "scale_image": "https://images.unsplash.com/photo-1544943910-04c54e739fe7?w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=1200&q=80",
+    "scale_image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
     "gallery": [
-      "https://images.unsplash.com/photo-1519708227418-c8fd9a32b9a2?w=1200&q=80",
-      "https://images.unsplash.com/photo-1544943910-04c54e739fe7?w=800&q=80",
+      "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=1200&q=80",
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
       "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800&q=80"
     ],
     "category": "魚排",
@@ -83,11 +83,11 @@
       "certification_url": "/docs/lab-report-003.pdf"
     },
     "tags": ["禮盒", "產地直送", "SGS檢驗"],
-    "image": "https://images.unsplash.com/photo-1559847843-ffeb791d8a0a?w=1200&q=80",
-    "scale_image": "https://images.unsplash.com/photo-1563379926898-05f4575a88d8?w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1515443961218-a51367888e4b?w=1200&q=80",
+    "scale_image": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800&q=80",
     "gallery": [
-      "https://images.unsplash.com/photo-1559847843-ffeb791d8a0a?w=1200&q=80",
-      "https://images.unsplash.com/photo-1563379926898-05f4575a88d8?w=800&q=80"
+      "https://images.unsplash.com/photo-1515443961218-a51367888e4b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800&q=80"
     ],
     "category": "貝類",
     "sku": "SCALLOP-003",
@@ -117,10 +117,10 @@
     },
     "tags": ["切片", "生食級", "急凍直送"],
     "image": "https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=1200&q=80",
-    "scale_image": "https://images.unsplash.com/photo-1580959375944-d1b958e64b0b?w=800&q=80",
+    "scale_image": "https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=800&q=80",
     "gallery": [
       "https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=1200&q=80",
-      "https://images.unsplash.com/photo-1580959375944-d1b958e64b0b?w=800&q=80"
+      "https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=800&q=80"
     ],
     "category": "魚排",
     "sku": "SALMON-004",
@@ -150,10 +150,10 @@
     },
     "tags": ["一夜干", "漁港直送", "即烤即食"],
     "image": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1200&q=80",
-    "scale_image": "https://images.unsplash.com/photo-1534604973900-4ff81f62ca8c?w=800&q=80",
+    "scale_image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800&q=80",
     "gallery": [
       "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1200&q=80",
-      "https://images.unsplash.com/photo-1534604973900-4ff81f62ca8c?w=800&q=80"
+      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800&q=80"
     ],
     "category": "一夜干",
     "sku": "FISH-005",
@@ -167,39 +167,5 @@
       "溫層：常溫／冷凍依批次"
     ],
     "shipping_info": "多數批次以冷凍出貨，收到後可冷凍保存。烤製前請完全解凍並擦乾表面。"
-  },
-  {
-    "id": "lu-hao-jia-006",
-    "name": "帝王蟹腳",
-    "description": "阿拉斯加帝王蟹腳，急凍直送。蟹肉飽滿，適合清蒸或焗烤。",
-    "detail_intro": "阿拉斯加海域帝王蟹，只選飽滿蟹腳，單隻重量約 500g。蟹殼已預切，蒸煮後輕鬆剝殼。蟹肉纖維分明，甜度佳，適合宴客或節慶聚餐。\n\n建議：清蒸 12 分鐘，或奶油蒜香焗烤。搭配檸檬奶油醬最對味。",
-    "price": 1680,
-    "original_price": 1980,
-    "weight_range": "500g",
-    "temp_layer": "frozen",
-    "traceability": {
-      "origin": "阿拉斯加",
-      "harvest_date": "2026-04-28",
-      "certification_url": "/docs/lab-report-006.pdf"
-    },
-    "tags": ["進口", "蟹腳", "急凍直送"],
-    "image": "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=1200&q=80",
-    "scale_image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
-    "gallery": [
-      "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=1200&q=80",
-      "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80"
-    ],
-    "category": "蟹類",
-    "sku": "CRAB-006",
-    "stock_status": "in_stock",
-    "promo_label": "宴客首選｜進口蟹腳",
-    "spec_items": [
-      "內容物：帝王蟹腳約 500g",
-      "產地：阿拉斯加",
-      "保存方式：-18°C 冷凍",
-      "保存期限：冷凍 12 個月",
-      "溫層：冷凍配送"
-    ],
-    "shipping_info": "冷凍宅配，獨立包裝避免壓傷。蟹腳尖銳，拆封請小心。建議解凍後當日食用。"
   }
 ]
