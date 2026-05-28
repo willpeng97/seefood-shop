@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useCartStore } from "@/store/cart-store";
+import { AccountMenu } from "@/components/AccountMenu";
 
 export function Header() {
   const totalItems = useCartStore((s) => s.totalItems());
@@ -22,7 +23,7 @@ export function Header() {
           <p className="hidden text-xs text-ocean-600 sm:block">遇見最新鮮的日常</p>
         </div>
 
-        <ul className="flex items-center gap-4 sm:gap-8 text-base font-medium">
+        <ul className="flex items-center gap-3 sm:gap-6 text-base font-medium">
           <li>
             <Link
               href="/products"
@@ -30,6 +31,9 @@ export function Header() {
             >
               全部商品
             </Link>
+          </li>
+          <li>
+            <AccountMenu />
           </li>
           <li>
             <Link
