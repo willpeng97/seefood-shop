@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs/server";
+import { getAuthUserId } from "@/lib/auth/session";
 import { prisma, isDatabaseConfigured } from "@/lib/db";
 import { getProductById } from "@/lib/products";
 import { generateOrderNumber, toEcpayMerchantTradeNo } from "@/lib/orders";
@@ -24,13 +24,13 @@ export async function GET() {
     return NextResponse.json({ error: "資料庫未設定" }, { status: 503 });
   }
 
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) {
     return NextResponse.json({ error: "請先登入" }, { status: 401 });
   }
 
   const orders = await prisma.order.findMany({
-    where: { clerkUserId: userId },
+    where: { userId },
     include: { items: true },
     orderBy: { createdAt: "desc" },
   });
@@ -44,7 +44,7 @@ export async function POST(request: Request) {
   }
 
   const body = (await request.json()) as CreateOrderBody;
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
 
   if (!body.items?.length) {
     return NextResponse.json({ error: "購物車是空的" }, { status: 400 });
@@ -90,7 +90,7 @@ export async function POST(request: Request) {
     data: {
       orderNumber,
       ecpayMerchantTradeNo: toEcpayMerchantTradeNo(orderNumber),
-      clerkUserId: userId ?? null,
+      userId: userId ?? null,
       status: OrderStatus.PENDING_PAYMENT,
       totalAmount,
       recipientName: body.shipping.name,

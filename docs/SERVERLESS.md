@@ -7,7 +7,7 @@
 | Frontend + Backend | Next.js App Router（Fullstack） |
 | Database | Neon PostgreSQL |
 | ORM | Prisma |
-| Auth | Clerk（Google / LINE / Email） |
+| Auth | Neon Auth（Better Auth，Google / Email OTP） |
 | Storage | `public/` 靜態檔 |
 | Deploy | Vercel |
 | Payment | 綠界 ECPay |
@@ -16,7 +16,7 @@
 
 ```bash
 cp .env.example .env.local
-# 填入 DATABASE_URL、Clerk、ECPay（測試金鑰）
+# 填入 DATABASE_URL、Neon Auth、ECPay（測試金鑰）
 
 npm install
 npx prisma generate
@@ -25,19 +25,37 @@ npm run db:seed
 npm run dev
 ```
 
-## Clerk 設定
+## Neon Auth 設定
 
-1. 於 [Clerk Dashboard](https://dashboard.clerk.com) 建立 Application
-2. 複製 Publishable Key / Secret Key 至 `.env.local`
-3. **Google**：Authentication → Social → 啟用 Google
-4. **LINE**：Authentication → Social → 新增 Custom OAuth（LINE Login Channel）
-5. 設定 Redirect URLs：`http://localhost:3000/*` 與 Vercel 網域
+1. 於 [Neon Console](https://console.neon.tech) 專案 → **Auth** → **Configuration**，複製 **Auth Base URL** 至 `NEON_AUTH_BASE_URL`
+2. 產生 Cookie secret（至少 32 字元）：
+
+   ```bash
+   openssl rand -base64 32
+   ```
+
+   寫入 `NEON_AUTH_COOKIE_SECRET`
+3. 設定 `NEXT_PUBLIC_NEON_AUTH_ENABLED=true`（讓前端顯示登入 UI）
+4. **Google**：Auth → Providers → 啟用 Google，並設定 OAuth Client ID / Secret
+5. **Email**：預設支援 Email + 密碼；可於 Provider 啟用 Email OTP
+6. OAuth 回調由 `/api/auth/*` 代理，本機網域需加入 Neon Auth 允許清單
+
+參考：[Migrate from legacy auth](https://neon.com/docs/auth/migrate/from-legacy-auth)、[Next.js quick start](https://neon.com/docs/auth/quick-start/nextjs-api-only)
+
+### 路由
+
+| 路徑 | 說明 |
+|------|------|
+| `/api/auth/[...path]` | Auth API 代理 |
+| `/auth/sign-in`、`/auth/sign-up` | 內建登入／註冊 UI |
+| `/account/auth` | 站內會員登入區（嵌入 AuthView） |
 
 ## Neon + Prisma
 
 1. [Neon](https://neon.tech) 建立專案，複製連線字串至 `DATABASE_URL`
-2. `npx prisma db push` 同步 Schema
+2. `npx prisma db push` 同步 Schema（`user_id` 欄位取代原 Clerk `clerk_user_id`）
 3. `npm run db:seed` 匯入商品與優惠券
+4. 選填：`NEON_AUTH_DEMO_USER_ID` 綁定示範優惠券至測試帳號
 
 ## 綠界 ECPay（測試）
 
@@ -68,6 +86,7 @@ npm run dev
 | POST | /api/orders | 建立訂單（可訪客） |
 | GET | /api/orders | 我的訂單（需登入） |
 | GET | /api/coupons | 我的優惠券（需登入） |
+| GET/POST | /api/auth/[...path] | Neon Auth 代理 |
 | GET | /api/payment/ecpay/checkout | 綠界付款表單 |
 | POST | /api/payment/ecpay/callback | 綠界付款通知 |
 

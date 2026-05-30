@@ -76,19 +76,19 @@ async function main() {
     });
   }
 
-  const demoUserId = process.env.CLERK_DEMO_USER_ID;
+  const demoUserId = process.env.NEON_AUTH_DEMO_USER_ID;
   if (demoUserId) {
     const allCoupons = await prisma.coupon.findMany();
     for (const coupon of allCoupons) {
       await prisma.userCoupon.upsert({
         where: {
-          clerkUserId_couponId: {
-            clerkUserId: demoUserId,
+          userId_couponId: {
+            userId: demoUserId,
             couponId: coupon.id,
           },
         },
         create: {
-          clerkUserId: demoUserId,
+          userId: demoUserId,
           couponId: coupon.id,
           usedAt: coupon.code === "FISH88" ? new Date() : null,
         },

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { useClerk, useUser } from "@clerk/nextjs";
+import { authClient } from "@/lib/auth/client";
 import { SignedIn, SignedOut } from "@/components/AuthGate";
 import { env } from "@/lib/env";
 
@@ -115,16 +115,21 @@ const DefaultAvatar = () => (
   </svg>
 );
 
-function AccountMenuWithClerk() {
-  const { user } = useUser();
-  const { signOut } = useClerk();
+function AccountMenuWithAuth() {
+  const { data } = authClient.useSession();
+  const user = data?.user;
+
+  const handleSignOut = async () => {
+    await authClient.signOut();
+    window.location.href = "/";
+  };
 
   return (
     <AccountMenuShell
       avatar={
-        user?.imageUrl ? (
+        user?.image ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={user.imageUrl} alt="" className="h-9 w-9 rounded-md object-cover" />
+          <img src={user.image} alt="" className="h-9 w-9 rounded-md object-cover" />
         ) : (
           <DefaultAvatar />
         )
@@ -133,7 +138,7 @@ function AccountMenuWithClerk() {
         <>
           <SignedIn>
             <p className="text-base font-semibold text-ocean-900">
-              {user?.fullName ?? user?.primaryEmailAddress?.emailAddress ?? "會員"}
+              {user?.name ?? user?.email ?? "會員"}
             </p>
           </SignedIn>
           <SignedOut>
@@ -148,7 +153,7 @@ function AccountMenuWithClerk() {
               <button
                 type="button"
                 role="menuitem"
-                onClick={() => signOut({ redirectUrl: "/" })}
+                onClick={handleSignOut}
                 className="block w-full px-4 py-3 text-left text-ocean-800 transition-colors hover:bg-ocean-50"
               >
                 登出
@@ -162,7 +167,7 @@ function AccountMenuWithClerk() {
 }
 
 export function AccountMenu() {
-  if (!env.clerkPublishableKey) {
+  if (!env.neonAuthConfigured) {
     return (
       <AccountMenuShell
         avatar={<DefaultAvatar />}
@@ -173,5 +178,5 @@ export function AccountMenu() {
     );
   }
 
-  return <AccountMenuWithClerk />;
+  return <AccountMenuWithAuth />;
 }

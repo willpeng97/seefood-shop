@@ -12,7 +12,7 @@
 | 狀態 | Zustand（persist 本地儲存） |
 | 圖片 | next/image + Unsplash CDN |
 | 資料庫 | Neon PostgreSQL + Prisma |
-| 驗證 | Clerk（Google / LINE / Email） |
+| 驗證 | Neon Auth（Google / Email OTP） |
 | 金流 | 綠界 ECPay |
 | 部署 | Vercel（Fullstack）／GitHub Pages（靜態 Demo） |
 
@@ -20,7 +20,7 @@
 
 ```bash
 npm install
-cp .env.example .env.local   # 填入 DATABASE_URL、Clerk、ECPay
+cp .env.example .env.local   # 填入 DATABASE_URL、Neon Auth、ECPay
 npx prisma db push
 npm run db:seed
 npm run dev

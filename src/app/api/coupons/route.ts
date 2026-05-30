@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs/server";
+import { getAuthUserId } from "@/lib/auth/session";
 import { prisma, isDatabaseConfigured } from "@/lib/db";
 
 export async function GET() {
@@ -7,7 +7,7 @@ export async function GET() {
     return NextResponse.json({ error: "資料庫未設定" }, { status: 503 });
   }
 
-  const { userId } = await auth();
+  const userId = await getAuthUserId();
   if (!userId) {
     return NextResponse.json({ error: "請先登入" }, { status: 401 });
   }
@@ -19,18 +19,18 @@ export async function GET() {
   if (welcome) {
     await prisma.userCoupon.upsert({
       where: {
-        clerkUserId_couponId: {
-          clerkUserId: userId,
+        userId_couponId: {
+          userId,
           couponId: welcome.id,
         },
       },
-      create: { clerkUserId: userId, couponId: welcome.id },
+      create: { userId, couponId: welcome.id },
       update: {},
     });
   }
 
   const userCoupons = await prisma.userCoupon.findMany({
-    where: { clerkUserId: userId },
+    where: { userId },
     include: { coupon: true },
     orderBy: { coupon: { expiresAt: "asc" } },
   });

@@ -57,11 +57,11 @@ export function CouponsPanel() {
     setTimeout(() => setCopiedCode(null), 1600);
   };
 
-  if (!env.clerkPublishableKey) {
+  if (!env.neonAuthConfigured) {
     return (
       <section className="rounded-2xl border border-ocean-100 bg-white p-8 shadow-sm">
         <p className="text-base text-ocean-700">
-          請設定 Clerk 環境變數以啟用優惠券功能（需 Neon 資料庫 + Clerk）。
+          請設定 Neon Auth 環境變數以啟用優惠券功能（需 Neon 資料庫 + Neon Auth）。
         </p>
       </section>
     );

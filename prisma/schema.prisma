@@ -47,7 +47,7 @@ model Product {
 model Order {
   id             String      @id @default(cuid())
   orderNumber    String      @unique @map("order_number")
-  clerkUserId    String?     @map("clerk_user_id")
+  userId         String?     @map("user_id")
   status         OrderStatus @default(PENDING_PAYMENT)
   totalAmount    Int         @map("total_amount")
   recipientName  String      @map("recipient_name")
@@ -65,7 +65,7 @@ model Order {
   updatedAt      DateTime    @updatedAt @map("updated_at")
   items          OrderItem[]
 
-  @@index([clerkUserId])
+  @@index([userId])
   @@map("orders")
 }
 
@@ -98,12 +98,12 @@ model Coupon {
 
 model UserCoupon {
   id          String    @id @default(cuid())
-  clerkUserId String    @map("clerk_user_id")
-  couponId    String    @map("coupon_id")
-  usedAt      DateTime? @map("used_at")
-  coupon      Coupon    @relation(fields: [couponId], references: [id], onDelete: Cascade)
+  userId   String    @map("user_id")
+  couponId String    @map("coupon_id")
+  usedAt   DateTime? @map("used_at")
+  coupon   Coupon    @relation(fields: [couponId], references: [id], onDelete: Cascade)
 
-  @@unique([clerkUserId, couponId])
-  @@index([clerkUserId])
+  @@unique([userId, couponId])
+  @@index([userId])
   @@map("user_coupons")
 }

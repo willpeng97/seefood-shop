@@ -1,32 +1,30 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+import { auth, isNeonAuthConfigured } from "@/lib/auth/server";
 
-const isPublicRoute = createRouteMatcher([
-  "/",
-  "/products(.*)",
-  "/checkout(.*)",
-  "/checkout/result(.*)",
-  "/account/auth(.*)",
-  "/sign-in(.*)",
-  "/sign-up(.*)",
-  "/api/products(.*)",
-  "/api/orders",
-  "/api/checkout",
-  "/api/payment/ecpay/callback",
-  "/api/payment/ecpay/checkout",
-]);
+const protectedMatcher = ["/account/orders", "/account/coupons"];
 
-export default clerkMiddleware(async (auth, request) => {
-  if (!process.env.CLERK_SECRET_KEY) {
-    return;
+export default function middleware(request: NextRequest) {
+  if (!isNeonAuthConfigured() || !auth) {
+    return NextResponse.next();
   }
-  if (!isPublicRoute(request)) {
-    await auth.protect();
+
+  if (request.headers.has("Next-Action")) {
+    return NextResponse.next();
   }
-});
+
+  const path = request.nextUrl.pathname;
+  const needsAuth = protectedMatcher.some(
+    (prefix) => path === prefix || path.startsWith(`${prefix}/`)
+  );
+
+  if (!needsAuth) {
+    return NextResponse.next();
+  }
+
+  return auth.middleware({ loginUrl: "/account/auth" })(request);
+}
 
 export const config = {
-  matcher: [
-    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest|pdf)).*)",
-    "/(api|trpc)(.*)",
-  ],
+  matcher: ["/account/orders/:path*", "/account/coupons/:path*"],
 };
