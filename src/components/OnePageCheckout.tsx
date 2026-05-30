@@ -15,7 +15,7 @@ const initialForm: CheckoutFormData = {
   address: "",
   city: "",
   postalCode: "",
-  paymentMethod: "line_pay",
+  paymentMethod: "ecpay",
   note: "",
 };
 
@@ -65,24 +65,34 @@ export function OnePageCheckout() {
         note: form.note,
       };
 
-      // GitHub Pages 靜態部署無 API Routes，改用前端 Mock
-      if (process.env.NEXT_PUBLIC_STATIC_EXPORT === "true") {
+      if (env.isStaticExport) {
         await new Promise((r) => setTimeout(r, 600));
         setOrderId(`ORD-${Date.now()}`);
         clearCart();
-      } else {
-        const res = await fetch(`${env.apiBaseUrl}/api/checkout`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error ?? "結帳失敗");
-
-        setOrderId(data.orderId);
-        clearCart();
+        return;
       }
+
+      const res = await fetch(`${env.apiBaseUrl}/api/orders`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...payload,
+          paymentMethod:
+            form.paymentMethod === "credit_card" ? "ecpay" : form.paymentMethod,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "結帳失敗");
+
+      clearCart();
+
+      if (data.paymentUrl) {
+        window.location.href = data.paymentUrl;
+        return;
+      }
+
+      setOrderId(data.orderNumber ?? data.orderId);
     } catch (err) {
       setError(err instanceof Error ? err.message : "結帳時發生錯誤");
     } finally {
@@ -99,7 +109,7 @@ export function OnePageCheckout() {
         <h2 className="text-2xl font-bold text-ocean-900">訂單已建立！</h2>
         <p className="mt-2 text-lg text-ocean-700">訂單編號：{orderId}</p>
         <p className="mt-4 text-base text-ocean-600">
-          第一階段為 Mock 訂單，第二階段將串接 LINE Pay 與物流追蹤。
+          付款完成後可至「訂單管理」查看配送狀態。
         </p>
         <Link
           href="/products"
@@ -312,7 +322,7 @@ export function OnePageCheckout() {
             </div>
             <div className="sm:col-span-2">
               <label htmlFor="paymentMethod" className="block text-base font-medium text-ocean-800">
-                支付方式（暫存）
+                支付方式
               </label>
               <select
                 id="paymentMethod"
@@ -321,8 +331,8 @@ export function OnePageCheckout() {
                 onChange={handleChange}
                 className="mt-1 w-full min-h-[48px] rounded-lg border border-ocean-200 px-4 text-base focus:border-celadon-500 focus:outline-none focus:ring-2 focus:ring-celadon-500"
               >
-                <option value="line_pay">LINE Pay（第二階段串接）</option>
-                <option value="credit_card">信用卡預授權（第二階段串接）</option>
+                <option value="ecpay">綠界 ECPay（信用卡 / ATM / 超商）</option>
+                <option value="credit_card">信用卡（綠界）</option>
               </select>
             </div>
             <div className="sm:col-span-2">

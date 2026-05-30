@@ -1,35 +1,32 @@
 "use client";
 
+import { SignIn, SignUp } from "@clerk/nextjs";
 import { useState } from "react";
+import { env } from "@/lib/env";
 
 type AuthMode = "login" | "register";
 
 export function AuthPanel() {
   const [mode, setMode] = useState<AuthMode>("login");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [message, setMessage] = useState<string | null>(null);
 
-  const submitText = mode === "login" ? "登入" : "建立帳號";
-
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    setMessage(
-      mode === "login"
-        ? "前端 Mock：已模擬登入成功，後續可串接會員 API。"
-        : "前端 Mock：已建立會員資料，後續可串接註冊 API。"
+  if (!env.clerkPublishableKey) {
+    return (
+      <section className="rounded-2xl border border-ocean-100 bg-white p-8 shadow-sm">
+        <h2 className="text-xl font-semibold text-ocean-900">會員系統尚未設定</h2>
+        <p className="mt-3 text-base text-ocean-700">
+          請在 Vercel / 本地環境設定 Clerk 金鑰（
+          <code className="text-sm">NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY</code>、
+          <code className="text-sm">CLERK_SECRET_KEY</code>），即可啟用 Google、LINE
+          與 Email 登入。
+        </p>
+      </section>
     );
-  };
-
-  const mockSso = (provider: "Google" | "LINE") => {
-    setMessage(`前端 Mock：已觸發 ${provider} OAuth 流程，後續串接正式登入。`);
-  };
+  }
 
   return (
     <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-      <section className="rounded-2xl border border-ocean-100 bg-white p-6 shadow-sm sm:p-8">
-        <div className="mb-6 flex items-center gap-3">
+      <section className="rounded-2xl border border-ocean-100 bg-white p-4 shadow-sm sm:p-6">
+        <div className="mb-4 flex items-center gap-3">
           <button
             type="button"
             onClick={() => setMode("login")}
@@ -54,103 +51,40 @@ export function AuthPanel() {
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {mode === "register" && (
-            <div>
-              <label htmlFor="name" className="mb-1 block text-base font-medium text-ocean-800">
-                姓名
-              </label>
-              <input
-                id="name"
-                type="text"
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="min-h-[48px] w-full rounded-lg border border-ocean-200 px-4 text-base focus:border-celadon-500 focus:outline-none focus:ring-2 focus:ring-celadon-200"
-              />
-            </div>
-          )}
-
-          <div>
-            <label htmlFor="email" className="mb-1 block text-base font-medium text-ocean-800">
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              required
-              autoComplete="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="min-h-[48px] w-full rounded-lg border border-ocean-200 px-4 text-base focus:border-celadon-500 focus:outline-none focus:ring-2 focus:ring-celadon-200"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="password"
-              className="mb-1 block text-base font-medium text-ocean-800"
-            >
-              密碼
-            </label>
-            <input
-              id="password"
-              type="password"
-              required
-              autoComplete={mode === "login" ? "current-password" : "new-password"}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="min-h-[48px] w-full rounded-lg border border-ocean-200 px-4 text-base focus:border-celadon-500 focus:outline-none focus:ring-2 focus:ring-celadon-200"
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="min-h-[50px] w-full rounded-xl bg-ocean-900 px-6 text-lg font-semibold text-white transition-colors hover:bg-celadon-700"
-          >
-            {submitText}
-          </button>
-        </form>
-
-        <div className="my-6 flex items-center gap-3">
-          <span className="h-px flex-1 bg-ocean-100" />
-          <span className="text-sm text-ocean-500">或使用第三方登入</span>
-          <span className="h-px flex-1 bg-ocean-100" />
-        </div>
-
-        <div className="grid gap-3 sm:grid-cols-2">
-          <button
-            type="button"
-            onClick={() => mockSso("Google")}
-            className="min-h-[48px] rounded-lg border border-ocean-200 bg-white px-4 text-base font-medium text-ocean-800 transition-colors hover:border-celadon-400 hover:bg-ocean-50"
-          >
-            使用 Google 登入
-          </button>
-          <button
-            type="button"
-            onClick={() => mockSso("LINE")}
-            className="min-h-[48px] rounded-lg border border-[#06C755]/40 bg-white px-4 text-base font-medium text-[#06C755] transition-colors hover:bg-[#06C755]/10"
-          >
-            使用 LINE 登入
-          </button>
-        </div>
-
-        {message && (
-          <p className="mt-5 rounded-lg bg-ocean-50 px-4 py-3 text-base text-ocean-700" role="status">
-            {message}
-          </p>
+        {mode === "login" ? (
+          <SignIn
+            routing="hash"
+            signUpUrl="/account/auth#register"
+            appearance={{
+              elements: {
+                rootBox: "w-full",
+                card: "shadow-none border-0 p-0",
+              },
+            }}
+          />
+        ) : (
+          <SignUp
+            routing="hash"
+            signInUrl="/account/auth"
+            appearance={{
+              elements: {
+                rootBox: "w-full",
+                card: "shadow-none border-0 p-0",
+              },
+            }}
+          />
         )}
       </section>
 
-      <aside className="rounded-2xl border border-ocean-100 bg-white p-6 shadow-sm sm:p-8">
-        <h2 className="text-xl font-semibold text-ocean-900">會員權益</h2>
+      <aside className="rounded-2xl border border-ocean-100 bg-ocean-50/60 p-6">
+        <h2 className="text-lg font-semibold text-ocean-900">登入方式</h2>
         <ul className="mt-4 space-y-3 text-base text-ocean-700">
-          <li>• 即時查看訂單狀態與物流進度（前端介面已預留）</li>
-          <li>• 集中管理優惠券與折扣碼</li>
-          <li>• 追蹤常購商品與歷史訂單紀錄</li>
+          <li>Google 帳號（於 Clerk Dashboard 啟用）</li>
+          <li>LINE 帳號（於 Clerk Dashboard 設定 Custom OAuth）</li>
+          <li>Email + 密碼</li>
         </ul>
-        <p className="mt-6 rounded-lg bg-coral-100 px-4 py-3 text-sm text-coral-500">
-          提示：目前為純前端示意，尚未串接實際會員、OAuth 與訂單資料 API。
+        <p className="mt-6 text-sm text-ocean-600">
+          登入後可於「訂單管理」「我的優惠券」查看個人資料。金流由綠界 ECPay 處理。
         </p>
       </aside>
     </div>

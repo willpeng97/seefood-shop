@@ -11,8 +11,24 @@
 | 樣式 | Tailwind CSS v4 |
 | 狀態 | Zustand（persist 本地儲存） |
 | 圖片 | next/image + Unsplash CDN |
+| 資料庫 | Neon PostgreSQL + Prisma |
+| 驗證 | Clerk（Google / LINE / Email） |
+| 金流 | 綠界 ECPay |
+| 部署 | Vercel（Fullstack）／GitHub Pages（靜態 Demo） |
 
-## 快速開始
+## 快速開始（Serverless / Vercel）
+
+```bash
+npm install
+cp .env.example .env.local   # 填入 DATABASE_URL、Clerk、ECPay
+npx prisma db push
+npm run db:seed
+npm run dev
+```
+
+詳見 [docs/SERVERLESS.md](docs/SERVERLESS.md)。
+
+## 快速開始（僅前端）
 
 ```bash
 npm install

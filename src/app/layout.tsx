@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CartHydration } from "@/components/CartHydration";
+import { Providers } from "@/components/Providers";
 
 const notoSans = Noto_Sans_TC({
   variable: "--font-noto-sans",
@@ -31,10 +32,12 @@ export default function RootLayout({
   return (
     <html lang="zh-Hant" className={`${notoSans.variable} ${inter.variable} h-full`}>
       <body className="flex min-h-full flex-col antialiased">
-        <CartHydration />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <Providers>
+          <CartHydration />
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

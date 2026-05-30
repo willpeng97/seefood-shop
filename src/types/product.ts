@@ -48,6 +48,6 @@ export interface CheckoutFormData {
   address: string;
   city: string;
   postalCode: string;
-  paymentMethod: "line_pay" | "credit_card";
+  paymentMethod: "ecpay" | "credit_card";
   note?: string;
 }
