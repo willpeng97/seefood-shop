@@ -20,10 +20,12 @@ cp .env.example .env.local
 
 npm install
 npx prisma generate
-npx prisma db push
+npm run db:push    # 會從 .env.local 讀取 DATABASE_URL
 npm run db:seed
 npm run dev
 ```
+
+> **注意**：Prisma CLI 預設只讀專案根目錄的 `.env`，不會讀 `.env.local`（那是 Next.js 慣例）。請用 `npm run db:push`，或把 `DATABASE_URL` 複製到 `.env` 再執行 `npx prisma db push`。
 
 ## Neon Auth 設定
 
