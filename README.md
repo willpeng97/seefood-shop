@@ -21,12 +21,13 @@
 ```bash
 npm install
 cp .env.example .env.local   # 填入 DATABASE_URL、Neon Auth、ECPay
-npx prisma db push
+npm run db:push
 npm run db:seed
 npm run dev
 ```
 
-詳見 [docs/SERVERLESS.md](docs/SERVERLESS.md)。
+詳見 [docs/SERVERLESS.md](docs/SERVERLESS.md)。  
+從 Cloud Agent 改本機開發請讀 [docs/DEV-HANDOFF.md](docs/DEV-HANDOFF.md)。
 
 ## 快速開始（僅前端）
 
