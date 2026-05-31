@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useCartStore } from "@/store/cart-store";
 import { TempLayerBadge } from "./TempLayerBadge";
 import type { CheckoutFormData } from "@/types/product";
-import { env } from "@/lib/env";
 
 const initialForm: CheckoutFormData = {
   name: "",
@@ -65,7 +64,7 @@ export function OnePageCheckout() {
         note: form.note,
       };
 
-      const res = await fetch(`${env.apiBaseUrl}/api/orders`, {
+      const res = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

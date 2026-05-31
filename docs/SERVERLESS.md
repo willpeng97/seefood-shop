@@ -78,7 +78,21 @@ npm run dev
 2. 環境變數：同上
 3. Build Command：`npm run build`（`postinstall` 會執行 `prisma generate`）
 4. 於 Vercel 填入 `DATABASE_URL`（Neon 建議使用 pooled 連線字串）
-5. 部署後將 `NEXT_PUBLIC_APP_URL`、`NEXT_PUBLIC_API_BASE_URL` 設為 Vercel 網域
+
+### 選填：`NEXT_PUBLIC_APP_URL` / `NEXT_PUBLIC_API_BASE_URL`
+
+| 變數 | 是否必填 | 說明 |
+|------|----------|------|
+| `NEXT_PUBLIC_API_BASE_URL` | 否 | 前端呼叫 API 的基底網址。Vercel 全端同網域部署時**不必設**，程式會用相對路徑 `/api/...`。 |
+| `NEXT_PUBLIC_APP_URL` | 否* | 綠界付款回調等需絕對網址。未設時 server 會依序使用 Vercel 內建變數 `VERCEL_PROJECT_PRODUCTION_URL` → `VERCEL_URL` → 本機 `localhost:3000`。 |
+
+\* 若已綁定**自訂網域**（例如 `shop.example.com`），且綠界後台只允許該網域回調，請設為 `https://shop.example.com` 並重新部署。
+
+本機開發若需完整測試綠界回調，可在 `.env.local` 設：
+
+```bash
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
 
 ## API 一覽
 

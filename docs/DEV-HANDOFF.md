@@ -109,8 +109,8 @@ npm run dev
 | `NEXT_PUBLIC_NEON_AUTH_ENABLED` | Auth UI | 設 `true` |
 | `NEON_AUTH_BASE_URL` | Auth | Neon Console → **Auth** → Configuration |
 | `NEON_AUTH_COOKIE_SECRET` | Auth | `openssl rand -base64 32`（≥32 字元） |
-| `NEXT_PUBLIC_APP_URL` | 建議 | `http://localhost:3000` |
-| `NEXT_PUBLIC_API_BASE_URL` | 建議 | 同左 |
+| `NEXT_PUBLIC_APP_URL` | 選填 | 自訂網域或本機綠界測試；Vercel 預設網域可不設 |
+| `NEXT_PUBLIC_API_BASE_URL` | 選填 | 同網域部署可不設 |
 | `ECPAY_*` | 金流測試 | 見 `.env.example` 測試預設 |
 | `NEON_AUTH_DEMO_USER_ID` | 選填 | seed 綁定示範優惠券 |
 

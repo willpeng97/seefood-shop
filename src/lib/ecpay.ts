@@ -1,4 +1,5 @@
 import crypto from "crypto";
+import { getAppUrl } from "@/lib/app-url";
 
 export interface EcpayConfig {
   merchantId: string;
@@ -14,7 +15,7 @@ export function getEcpayConfig(): EcpayConfig | null {
   const merchantId = process.env.ECPAY_MERCHANT_ID;
   const hashKey = process.env.ECPAY_HASH_KEY;
   const hashIV = process.env.ECPAY_HASH_IV;
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+  const appUrl = getAppUrl();
 
   if (!merchantId || !hashKey || !hashIV) {
     return null;
