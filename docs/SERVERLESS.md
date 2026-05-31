@@ -94,4 +94,4 @@ npm run dev
 
 ## 無資料庫時
 
-未設定 `DATABASE_URL` 時，商品資料仍從 `src/data/products.json` 讀取，訂單／優惠券 API 回傳 503。
+未設定 `DATABASE_URL` 時，所有 API（含商品）回傳 503；Server Component 頁面亦無法載入商品，請先完成 Neon 連線與 `npm run db:seed`。

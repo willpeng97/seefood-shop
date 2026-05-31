@@ -29,7 +29,7 @@
 | 項目 | 狀態 | 備註 |
 |------|------|------|
 | Neon PostgreSQL + Prisma 5.22 | ✅ | 勿升 Prisma 7（schema `url` 問題曾失敗） |
-| 商品 / 訂單 / 優惠券 API | ✅ | 無 `DATABASE_URL` 時商品 fallback JSON |
+| 商品 / 訂單 / 優惠券 API | ✅ | 一律讀 DB；無 `DATABASE_URL` 時 API 回 503 |
 | 綠界 ECPay 測試串接 | ✅ | 見 `src/lib/ecpay.ts` |
 | **Clerk → Neon Auth** | ✅ | `@neondatabase/auth@0.3.0-beta` + `auth-ui@0.2.0-beta` |
 | PR #5 內容 | ✅ | 已 fast-forward 合併進 `main` |
@@ -100,15 +100,6 @@ npm run dev
 
 瀏覽器：**http://localhost:3000**
 
-### 2.3 僅前端（不接 DB）
-
-```bash
-npm install
-npm run dev
-```
-
-商品來自 `src/data/products.json`；訂單／優惠券 API 可能 503。
-
 ---
 
 ## 三、環境變數檢查清單
@@ -149,7 +140,7 @@ src/lib/auth/server.ts      # Neon Auth 伺服器單例
 src/lib/auth/client.ts      # 客戶端 authClient
 src/lib/auth/session.ts     # API 用 getAuthUserId()
 src/lib/db.ts               # Prisma、isDatabaseConfigured()
-src/lib/products.ts         # DB 或 JSON fallback
+src/lib/products.ts         # DB
 prisma/schema.prisma        # Product, Order, Coupon, UserCoupon
 docs/SERVERLESS.md          # 架構與 Neon / ECPay 細節
 docs/DESIGN.md              # 品牌視覺規範

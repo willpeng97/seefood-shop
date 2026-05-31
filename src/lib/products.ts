@@ -1,9 +1,12 @@
-import productsData from "@/data/products.json";
 import { prisma, isDatabaseConfigured } from "@/lib/db";
 import { mapDbProductToProduct } from "@/lib/product-mapper";
 import type { Product } from "@/types/product";
 
-const fallbackProducts = productsData as Product[];
+function assertDatabaseConfigured(): void {
+  if (!isDatabaseConfigured()) {
+    throw new Error("資料庫未設定");
+  }
+}
 
 export function getProductGallery(product: Product): string[] {
   if (product.gallery && product.gallery.length > 0) {
@@ -13,27 +16,15 @@ export function getProductGallery(product: Product): string[] {
 }
 
 export async function getProducts(): Promise<Product[]> {
-  if (!isDatabaseConfigured()) {
-    return fallbackProducts;
-  }
-  try {
-    const rows = await prisma.product.findMany({ orderBy: { name: "asc" } });
-    return rows.map(mapDbProductToProduct);
-  } catch {
-    return fallbackProducts;
-  }
+  assertDatabaseConfigured();
+  const rows = await prisma.product.findMany({ orderBy: { name: "asc" } });
+  return rows.map(mapDbProductToProduct);
 }
 
 export async function getProductById(id: string): Promise<Product | undefined> {
-  if (!isDatabaseConfigured()) {
-    return fallbackProducts.find((p) => p.id === id);
-  }
-  try {
-    const row = await prisma.product.findUnique({ where: { id } });
-    return row ? mapDbProductToProduct(row) : undefined;
-  } catch {
-    return fallbackProducts.find((p) => p.id === id);
-  }
+  assertDatabaseConfigured();
+  const row = await prisma.product.findUnique({ where: { id } });
+  return row ? mapDbProductToProduct(row) : undefined;
 }
 
 export async function getRelatedProducts(

@@ -1,9 +1,13 @@
 import { NextResponse } from "next/server";
+import { isDatabaseConfigured } from "@/lib/db";
 import { getProductById } from "@/lib/products";
 
 type RouteContext = { params: Promise<{ id: string }> };
 
 export async function GET(_request: Request, context: RouteContext) {
+  if (!isDatabaseConfigured()) {
+    return NextResponse.json({ error: "資料庫未設定" }, { status: 503 });
+  }
   const { id } = await context.params;
   const product = await getProductById(id);
 
