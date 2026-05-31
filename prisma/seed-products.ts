@@ -1,0 +1,185 @@
+import type { Prisma } from "@prisma/client";
+
+type SeedProduct = Prisma.ProductUncheckedCreateInput;
+
+/** db:seed 初始商品資料 */
+export const seedProducts: SeedProduct[] = [
+  {
+    id: "lu-hao-jia-001",
+    name: "去刺金目鱸魚排",
+    description:
+      "台南魚塭直送，三清處理後急凍鎖鮮。煎至焦黃外酥內嫩，適合煎、烤、清蒸。",
+    detailIntro:
+      "台南魚塭養殖金目鱸，採三清處理（去鱗、去內臟、去鰓）後真空急凍，保留現撈鮮甜。每片魚排已去刺，老人小孩都能安心食用。\n\n建議料理：平底鍋煎至兩面金黃、氣炸鍋 180°C 12 分鐘、或清蒸後淋熱油蔥絲。解凍請置冷藏 12 小時，勿重複冷凍。",
+    price: 250,
+    originalPrice: 320,
+    weightRange: "250g-300g",
+    tempLayer: "frozen",
+    traceOrigin: "台南魚塭",
+    traceHarvestDate: "2026-05-20",
+    traceCertUrl: "/docs/lab-report-001.pdf",
+    tags: ["三清處理", "去刺", "急凍直送"],
+    image:
+      "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800&q=80",
+    scaleImage:
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800&q=80",
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
+    ],
+    category: "魚排",
+    sku: "FISH-LU-001",
+    stockStatus: "in_stock",
+    promoLabel: "魚塭直送｜去刺魚排熱銷",
+    specItems: [
+      "內容物：金目鱸魚排 1 片（約 250–300g）",
+      "產地：台灣嘉義",
+      "保存方式：-18°C 冷凍",
+      "保存期限：冷凍 12 個月",
+      "溫層：冷凍配送",
+    ],
+    shippingInfo:
+      "冷凍宅配，台灣本島 1–2 工作天出貨。離島與偏遠地區多加 1–2 日。收到後請立即冷凍，解凍後請當日食用完畢。",
+  },
+  {
+    id: "lu-hao-jia-002",
+    name: "野生白蝦仁",
+    description: "台灣西部海域捕撈，去殼急凍。肉質彈牙，適合炒菜、煮粥、火鍋。",
+    detailIntro:
+      "雲林口湖沿岸漁船捕撈，船上即刻去殼急凍，鎖住蝦仁的彈性與甘甜。無漂白、無保水劑，蝦仁呈自然淡粉色。\n\n適合蒜蓉炒蝦、蝦仁炒蛋、越南河粉、或部隊鍋。建議不解凍直接下鍋，口感最佳。",
+    price: 380,
+    originalPrice: 450,
+    weightRange: "300g",
+    tempLayer: "frozen",
+    traceOrigin: "雲林口湖",
+    traceHarvestDate: "2026-05-18",
+    traceCertUrl: "/docs/lab-report-002.pdf",
+    tags: ["去殼", "急凍直送", "無添加"],
+    image:
+      "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=1200&q=80",
+    scaleImage:
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=1200&q=80",
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
+    ],
+    category: "蝦類",
+    sku: "SHRIMP-002",
+    stockStatus: "in_stock",
+    promoLabel: "野生捕撈｜限時優惠",
+    specItems: [
+      "內容物：去殼白蝦仁 300g",
+      "產地：台灣雲林口湖",
+      "保存方式：-18°C 冷凍",
+      "保存期限：冷凍 10 個月",
+      "溫層：冷凍配送",
+    ],
+    shippingInfo:
+      "與其他冷凍商品合併出貨，滿額享免運。全程冷鏈車配送，簽收後請盡快放入冷凍庫。",
+  },
+  {
+    id: "lu-hao-jia-003",
+    name: "干貝禮盒",
+    description: "澎湖產地直送，常溫保存。每顆干貝均附產地證明，適合送禮或宴客。",
+    detailIntro:
+      "澎湖望安產地直送，每顆干貝皆經尺寸分級，直徑 3.5cm 以上。禮盒附產地證明與 SGS 檢驗摘要，送禮體面、自用安心。\n\n建議泡發：冷水浸泡 8 小時或溫水 4 小時，泡發後可用於煲湯、蒸蛋、或義大利燉飯。",
+    price: 1280,
+    originalPrice: 1580,
+    weightRange: "12顆/盒",
+    tempLayer: "ambient",
+    traceOrigin: "澎湖望安",
+    traceHarvestDate: "2026-04-15",
+    traceCertUrl: "/docs/lab-report-003.pdf",
+    tags: ["禮盒", "產地直送", "SGS檢驗"],
+    image:
+      "https://images.unsplash.com/photo-1515443961218-a51367888e4b?w=1200&q=80",
+    scaleImage:
+      "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1515443961218-a51367888e4b?w=1200&q=80",
+      "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800&q=80",
+    ],
+    category: "貝類",
+    sku: "SCALLOP-003",
+    stockStatus: "low_stock",
+    promoLabel: "送禮首選｜澎湖直送",
+    specItems: [
+      "內容物：干貝 12 顆／禮盒",
+      "產地：澎湖望安",
+      "保存方式：常溫陰乾",
+      "保存期限：常溫 6 個月",
+      "溫層：常溫配送",
+    ],
+    shippingInfo: "常溫宅配，精美禮盒包裝。春節與中秋旺季建議提前 3 日下單。",
+  },
+  {
+    id: "lu-hao-jia-004",
+    name: "鮭魚切片",
+    description: "挪威進口鮭魚，切片急凍。油脂豐富，適合生食、炙燒或香煎。",
+    detailIntro:
+      "挪威大西洋鮭，魚身中段切片，厚度約 1.2cm，適合生食級料理（請依個人喜好選擇是否生食）。魚油線條分明，炙燒後外焦內嫩。\n\n建議：解凍後擦乾表面，薄鹽醃 10 分鐘再煎；或做鮭魚握壽司、味噌燒。",
+    price: 420,
+    weightRange: "200g",
+    tempLayer: "frozen",
+    traceOrigin: "挪威",
+    traceHarvestDate: "2026-05-10",
+    traceCertUrl: "/docs/lab-report-004.pdf",
+    tags: ["切片", "生食級", "急凍直送"],
+    image:
+      "https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=1200&q=80",
+    scaleImage:
+      "https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=1200&q=80",
+      "https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=800&q=80",
+    ],
+    category: "魚排",
+    sku: "SALMON-004",
+    stockStatus: "in_stock",
+    specItems: [
+      "內容物：鮭魚切片 200g（約 4–5 片）",
+      "產地：挪威",
+      "保存方式：-18°C 冷凍",
+      "保存期限：冷凍 12 個月",
+      "溫層：冷凍配送",
+    ],
+    shippingInfo:
+      "冷凍配送。若需生食，建議收到後 3 日內食用，並注意解凍衛生。",
+  },
+  {
+    id: "lu-hao-jia-005",
+    name: "一夜干午仔魚",
+    description: "基隆漁港直送，一夜干工法保留鮮甜。常溫配送，開袋即烤。",
+    detailIntro:
+      "基隆漁港當日漁獲，以一夜干工法（海風吹乾一夜）濃縮鮮味，魚身薄鹽不腥。每包 3 尾，大小均一，烤箱或炭烤 8 分鐘即可上桌。\n\n小撇步：烤前劃刀、刷薄油，擠檸檬或搭配明太子醬都適合。",
+    price: 320,
+    originalPrice: 380,
+    weightRange: "3尾/包",
+    tempLayer: "ambient",
+    traceOrigin: "基隆漁港",
+    traceHarvestDate: "2026-05-22",
+    traceCertUrl: "/docs/lab-report-005.pdf",
+    tags: ["一夜干", "漁港直送", "即烤即食"],
+    image:
+      "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1200&q=80",
+    scaleImage:
+      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1200&q=80",
+      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800&q=80",
+    ],
+    category: "一夜干",
+    sku: "FISH-005",
+    stockStatus: "in_stock",
+    promoLabel: "漁港直送｜開袋即烤",
+    specItems: [
+      "內容物：一夜干午仔魚 3 尾／包",
+      "產地：台灣基隆",
+      "保存方式：冷凍或冷藏依包裝標示",
+      "保存期限：冷凍 6 個月",
+      "溫層：常溫／冷凍依批次",
+    ],
+    shippingInfo:
+      "多數批次以冷凍出貨，收到後可冷凍保存。烤製前請完全解凍並擦乾表面。",
+  },
+];

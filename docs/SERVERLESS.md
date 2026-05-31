@@ -75,9 +75,10 @@ npm run dev
 ## Vercel 部署
 
 1. Import GitHub repo
-2. 環境變數：同上（**不要**設定 `GITHUB_PAGES` / `NEXT_PUBLIC_STATIC_EXPORT`）
+2. 環境變數：同上
 3. Build Command：`npm run build`（`postinstall` 會執行 `prisma generate`）
 4. 於 Vercel 填入 `DATABASE_URL`（Neon 建議使用 pooled 連線字串）
+5. 部署後將 `NEXT_PUBLIC_APP_URL`、`NEXT_PUBLIC_API_BASE_URL` 設為 Vercel 網域
 
 ## API 一覽
 
@@ -91,7 +92,3 @@ npm run dev
 | GET/POST | /api/auth/[...path] | Neon Auth 代理 |
 | GET | /api/payment/ecpay/checkout | 綠界付款表單 |
 | POST | /api/payment/ecpay/callback | 綠界付款通知 |
-
-## 無資料庫時
-
-未設定 `DATABASE_URL` 時，所有 API（含商品）回傳 503；Server Component 頁面亦無法載入商品，請先完成 Neon 連線與 `npm run db:seed`。

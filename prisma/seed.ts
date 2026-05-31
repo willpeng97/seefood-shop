@@ -1,42 +1,15 @@
 import { PrismaClient } from "@prisma/client";
-import productsData from "../src/data/products.json";
-import type { Product as ProductJson } from "../src/types/product";
+import { seedProducts } from "./seed-products";
 
 const prisma = new PrismaClient();
 
-function mapProduct(p: ProductJson) {
-  return {
-    id: p.id,
-    name: p.name,
-    description: p.description,
-    detailIntro: p.detail_intro,
-    price: p.price,
-    originalPrice: p.original_price ?? null,
-    weightRange: p.weight_range,
-    tempLayer: p.temp_layer,
-    traceOrigin: p.traceability.origin,
-    traceHarvestDate: p.traceability.harvest_date ?? null,
-    traceCertUrl: p.traceability.certification_url,
-    tags: p.tags,
-    image: p.image,
-    scaleImage: p.scale_image,
-    gallery: p.gallery ?? [p.image, p.scale_image],
-    category: p.category,
-    sku: p.sku,
-    stockStatus: p.stock_status,
-    promoLabel: p.promo_label ?? null,
-    specItems: p.spec_items,
-    shippingInfo: p.shipping_info,
-  };
-}
-
 async function main() {
   console.log("Seeding products...");
-  for (const p of productsData as ProductJson[]) {
+  for (const product of seedProducts) {
     await prisma.product.upsert({
-      where: { id: p.id },
-      create: mapProduct(p),
-      update: mapProduct(p),
+      where: { id: product.id },
+      create: product,
+      update: product,
     });
   }
 

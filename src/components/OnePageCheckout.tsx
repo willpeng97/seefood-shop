@@ -65,13 +65,6 @@ export function OnePageCheckout() {
         note: form.note,
       };
 
-      if (env.isStaticExport) {
-        await new Promise((r) => setTimeout(r, 600));
-        setOrderId(`ORD-${Date.now()}`);
-        clearCart();
-        return;
-      }
-
       const res = await fetch(`${env.apiBaseUrl}/api/orders`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

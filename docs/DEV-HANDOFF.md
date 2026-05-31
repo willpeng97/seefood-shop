@@ -22,7 +22,6 @@
 | 品牌依 `docs/DESIGN.md`（SEEFOOD｜遇見鮮食） | ✅ |
 | 失效 Unsplash 圖片修復 | ✅ |
 | 右上角會員選單（登入、訂單、優惠券） | ✅ |
-| GitHub Pages 靜態 Demo | ✅（`build:pages`，與 Vercel 全端分開） |
 
 ### 1.2 Serverless 全端（已合併 `main`）
 
@@ -56,11 +55,9 @@
 | Neon connect string | 使用者從 Console 取得 **pooled** URL（主機名含 `-pooler`） | 整行貼入 `DATABASE_URL`；若連線失敗可拿掉 `channel_binding=require` |
 | `/api/auth/get-session` 400 | Neon Auth 環境變數未設或錯誤 | 檢查 `NEON_AUTH_BASE_URL`、`NEON_AUTH_COOKIE_SECRET`（≥32 字元）、`NEXT_PUBLIC_NEON_AUTH_ENABLED` |
 
-### 1.5 部署與分支
+### 1.5 部署
 
-- **Vercel**：Fullstack，需完整環境變數；**不要**設 `GITHUB_PAGES` / `NEXT_PUBLIC_STATIC_EXPORT`。
-- **GitHub Pages**：靜態版，無 API／登入。
-- 開發分支範例：`cursor/serverless-fullstack-7cd3`（已併入 `main`，可刪遠端分支）。
+- **Vercel**：Fullstack，需完整環境變數（見 `.env.example`）。
 
 ### 1.6 建議後續（尚未做或需本機驗證）
 
@@ -128,7 +125,6 @@ npm run lint         # ESLint
 npm run db:push      # Prisma 同步 schema（讀 .env.local）
 npm run db:seed      # 種子資料
 npm run db:studio    # Prisma Studio
-npm run build:pages  # GitHub Pages 靜態建置（勿與 Vercel 全端混淆）
 ```
 
 ---

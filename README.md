@@ -15,7 +15,7 @@
 | 資料庫 | Neon PostgreSQL + Prisma                |
 | 驗證  | Neon Auth（Google / Email OTP）           |
 | 金流  | 綠界 ECPay                                |
-| 部署  | Vercel（Fullstack）／GitHub Pages（靜態 Demo） |
+| 部署  | Vercel（Fullstack） |
 
 
 ## 快速開始（Serverless / Vercel）
@@ -35,20 +35,6 @@ npm run dev
 
 商品、訂單等資料一律從資料庫讀取，仍需設定 `DATABASE_URL` 並執行 `db:push`、`db:seed`（見上方 Serverless 步驟）。
 
-## 線上 Demo（GitHub Pages）
-
-**網址：** [https://willpeng97.github.io/seefood-shop/](https://willpeng97.github.io/seefood-shop/)
-
-合併至 `main` 後，GitHub Actions 會將靜態檔推送到 `gh-pages` 分支。首次請至 Repo **Settings → Pages → Build and deployment → Source** 選擇 **Deploy from a branch**，Branch 設為 **gh-pages** / **/ (root)**。
-
-本地預覽靜態站：
-
-```bash
-npm run build:pages
-npx serve out -l 3000
-# 瀏覽 http://localhost:3000/seefood-shop/
-```
-
 ## 專案結構
 
 ```
@@ -58,7 +44,6 @@ src/
 │   ├── products/[id]/    # 商品詳情 + 溯源卡片
 │   └── checkout/         # 一頁式結帳（動態載入）
 ├── components/
-├── data/products.json    # db:seed 初始商品資料
 ├── lib/
 ├── store/cart-store.ts
 └── types/
@@ -73,8 +58,7 @@ src/
 
 ```bash
 npm run dev         # 開發
-npm run build       # 標準建置（含 Node 伺服器）
-npm run build:pages # GitHub Pages 靜態匯出
+npm run build       # 正式建置
 npm run start       # 生產預覽
 npm run lint        # ESLint
 ```
